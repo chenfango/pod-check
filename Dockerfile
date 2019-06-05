@@ -1,3 +1,3 @@
 FROM alpine
-COPY ./app /usr/local/bin
-ENTRYPOINT /usr/local/bin
+COPY ./kube /
+ENTRYPOINT /kube

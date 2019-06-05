@@ -44,7 +44,7 @@ func findPodsByNamespace(namespace string) {
 	//	println(pod)
 	//}
 	for i := 0; i < len(pods.Items); i++ {
-		fmt.Println(pods.Items[i].Name)
+		//fmt.Println(pods.Items[i].Name)
 		//fmt.Println(pods.Items[i].Status.ContainerStatuses)
 		for a := 0; a < len(pods.Items[i].Status.ContainerStatuses); a++ {
 			status := pods.Items[i].Status.ContainerStatuses[a].Ready
