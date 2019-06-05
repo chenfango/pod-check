@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: check-test
+  name: check-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: check-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+        sidecar.istio.io/inject: "false"
+      labels:
+        app: check-test
+    spec:
+      containers:
+        - command:
+            - app
+          image: registry.cn-shenzhen.aliyuncs.com/axd/check-test
+          imagePullPolicy: Always
+          name: check-test
